@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+    <script src="../static/functions.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Search Results</h1>
+        <a href="/">Back to Home Page</a>
+    </header>
+
+    <section>
+        <h2>Results for "{{ keywords }}"</h2>
+        {% if grouped_games %}
+            {% for genre, games in grouped_games.items() %}
+                <h3>{{ genre }}</h3>
+                {% if games %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Genre</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for game in games %}
+                        <tr>
+                            <td>{{ game['title'] }}</td>
+                            <td>{{ game['description'] }}</td>
+                            <td>{{ genre }}</td>
+                            <td><a href="/game/{{ game['gameID'] }}">See More</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p>No games found for this genre.</p>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+        <p>No games found for your search.</p>
+        {% endif %}
+    </section>
+</body>
+</html>

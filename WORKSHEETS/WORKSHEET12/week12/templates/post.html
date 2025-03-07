@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post</title>
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+</head>
+<body>
+  <h1>Posts</h1>
+  {% for record from records %}
+<!--access to only the username-->
+    <p>{{record[1]}}</p>
+  {% endfor %}
+  <p>Click <a href="/index">here</a> to go back to the home page.</p>
+  <p>Click <a href="/logout">here</a> to log out.</p>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration Form</title>
+	<script type="text/javascript">
+		function countDigits(pwd){
+			var i, counter;
+			counter = 0;
+			i = 0;
+			for(;i<pwd.length;i++){
+				if("0123456789".search(pwd[i]) != -1)
+					counter++;
+			}
+			return counter;
+		}
+
+		function validate(){
+			uname = document.forms["frmRegistration"]["uname"].value;
+			pwd = document.forms["frmRegistration"]["pwd"].value;
+			pwd2 = document.forms["frmRegistration"]["pwd2"].value;
+			fullname = document.forms["frmRegistration"]["fullname"].value;
+			gender = document.forms["frmRegistration"]["gender"].value;
+
+			if (uname == ""){
+				alert("The username should be entered");
+				return false;
+			}
+			else if (pwd == ""){
+				alert("The password should be enterted");
+				return false;
+			}
+			else if (pwd2 == ""){
+				alert("The password should be enterted");
+				return false;
+			}
+			else if (pwd != pwd2){
+				alert("The passwords should be equal to each other");
+				return false;
+			}
+			else if (pwd.length < 5){
+				alert("The password should include at least 5 chars");
+				return false;
+			}
+			else if (countDigits(pwd) < 2){
+				alert("The password should include two digits");
+				return false;
+			}
+			else if (fullname == ""){
+				alert("The full name should be enterted");
+				return false;
+			}
+			else if (gender == ""){
+				alert("Gender should be selected");
+				return false;
+			}
+			return true;			
+		}
+
+	</script>
+</head>
+<body>
+	<h1>Registration Form</h1>
+	<form name="frmRegistration" action="/registration" method="post" onsubmit="return validate();">
+		<p>Username: <input type="text" name="uname" /></p>
+		<p>Password: <input type="password" name="pwd" /></p>
+		<p>Password again: <input type="password" name="pwd2" /></p>
+		<p>Name: <input type="text" name="fullname"></p>
+		<p>Gender <input type="radio" name="gender" value="Male" />Male <input type="radio" name="gender" value="Female" /> Female</p>
+		<p><input type="submit" value="Submit"> <input type="reset" value = "Reset"></p>
+	</form>
+</body>
+</html>

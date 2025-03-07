@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+    <script src="../static/functions.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Your Profile</h1>
+        {% if session.isAdmin %}
+        <nav>
+            <a href="/">Home Page</a> |
+            <a href="/manage_genres">Manage Genres</a> |
+            <a href="/profile">My Profile</a> |
+            <a href="/logout">Logout</a>
+        </nav>
+        {% else%}
+        <nav>
+            <a href="/">Home Page</a> |
+            <a href="/manage_games">Published Games</a> |
+            <a href="/profile">My Profile</a> |
+            <a href="/logout">Logout</a>
+        </nav>
+        {% endif %}
+    </header>
+
+    <!-- Success or Error Message -->
+    {% if success %}
+        <p style="color: green;">{{ success }}</p>
+    {% endif %}
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    <!-- Profile Form which will allow the user to change the password only -->
+    <form action="/profile" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" value="{{ user[0] }}" class="inputContent" readonly><br> <!-- readonly that the user doesn't change his username and make a mess-->
+
+        <label for="full_name">Full Name:</label>
+        <input type="text" id="full_name" name="full_name" value="{{ user[1] }}" class="inputContent" readonly><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="{{ user[2] }}" class="inputContent" readonly><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" value="{{ user[3] }}" class="inputContent" required><br>
+
+        <button type="submit">Change Password</button>
+    </form>
+</body>
+</html>

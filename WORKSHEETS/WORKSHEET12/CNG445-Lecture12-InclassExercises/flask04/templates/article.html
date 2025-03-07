@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h2>{% block title %}Article{% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+
+{% if article %}
+  <p>ID: {{ article[0] }}</p>
+  <p>Title: {{ article[1] }}</p>
+  <p>Description: {{ article[2] }}</p>
+{% endif %}
+
+{% endblock %}
+

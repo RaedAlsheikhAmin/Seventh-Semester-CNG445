@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Genres</title>
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+    <script src="../static/functions.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Manage Genres</h1>
+        <nav>
+            <a href="/">Home Page</a> |
+            <a href="/manage_genres">Manage Genres</a> |
+            <a href="/profile">My Profile</a> |
+            <a href="/logout">Logout</a>
+        </nav>
+    </header>
+
+    <!-- Error Message -->
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    <!-- Success Message -->
+    {% if success %}
+        <p style="color: green;">{{ success }}</p>
+    {% endif %}
+
+    <!-- Add New Genre Form -->
+    <form action="/manage_genres" method="post">
+        <label for="genre_name">Genre Name:</label>
+        <input type="text" id="genre_name" name="genre_name" required>
+        <button type="submit">Add Genre</button>
+    </form>
+
+    <!-- List of Existing Genres -->
+    <section>
+        <h2>Current Genres</h2>
+        {% if genres %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for genre in genres %}
+                <tr>
+                    <td>{{ genre[0] }}</td> <!-- Genre ID -->
+                    <td>{{ genre[1] }}</td> <!-- Genre Name -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No genres available at the moment.</p>
+        {% endif %}
+    </section>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+</head>
+<body>
+{% if username %}
+<p>Hello {{ username }}!</p>
+<p>Click <a href="/posts">here</a> to see my posts.</p>
+{% else %}
+<form method="POST" action="/login">
+    <p>Username: <input type="text" name="username" /></p>
+    <p>Password: <input type="password" name="pwd" /></p>
+    <p><input type="submit" value="Login" /></p>
+</form>
+{% endif %}
+</body>
+</html>

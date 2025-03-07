@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Semester Details</title>
+</head>
+<body>
+    <table>
+            <thead>
+                        <tr>
+                            <th>Course Code</th>
+                            <th>Number Of Sections</th>
+                        </tr>
+            </thead>
+            <tbody>
+            {% for Course in Courses %}
+                        <tr>
+                            <td><a href="/Course/{{ Course[0] }}">{{ Course[0] }}</a></td>
+                            <td>{{ Course[1] }}</td>
+
+                        </tr>
+            {% endfor %}
+            </tbody>
+
+
+
+    </table>
+</body>
+</html>

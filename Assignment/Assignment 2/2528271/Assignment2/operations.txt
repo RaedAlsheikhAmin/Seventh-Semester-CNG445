@@ -1,0 +1,7 @@
+purchase;dereboyucd1;cem;1-1-red;1-6-black
+purchase;magusa3;balduran;3-2-black
+purchase;magusa3;vyse;1-4-red
+return;magusa3;vyse;1-4-red
+purchase;magusa3;raedamin;20-1-Red
+purchase;dereboyucd1;raedamin;20-1-Red
+purchase;dereboyucd1;raedamin;20-1-Red;10-4-Black

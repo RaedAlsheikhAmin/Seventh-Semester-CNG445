@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="static/advertisement.css">
+    <script src="static/functions.js"></script>
+
+</head>
+<body>
+<div class="navbar">
+		<a href="/">Home Page</a>
+		<p>|</p>
+		<a href="/advertisement">My Advertisements</a>
+		<p>|</p>
+		<a href="/profile">My Profile</a>
+		<p>|</p>
+        <a href="/logout">Logout</a>
+    </div>
+
+<form name="advertisement_form" action="{{ url_for('advertisement') }}" method="post" onsubmit="return validate_advertisement_form()">
+        <div>
+            <label>Title:</label>
+            <input type="text" name="title">
+        </div>
+
+        <div>
+            <label>Description:</label>
+            <input type="text" name="description">
+        </div>
+        <div>
+        <label>Select a category:</label>
+        <select name="category">
+            {% for category in categories %}
+                <option value="{{ category[0] }}">{{ category[1] }}</option>
+            {% endfor %}
+        </select>
+        </div>
+        <button type="submit">Submit Advertisement</button>
+
+        <p id="error_message">{{msg}}</p>
+    </form>
+
+<table border="1">
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Activate/Deactivate</th>
+    </tr>
+    {% if advertisements|length == 0 %}
+        <tr>
+            <td>Empty</td>
+            <td>Empty</td>
+            <td>Empty</td>
+            <td>Empty</td>
+        </tr>
+    {% else %}
+        {% for ad in advertisements %}
+            <tr>
+                <td>{{ ad[0] }}</td>
+                <td>{{ ad[1] }}</td>
+                <td>{{ ad[2] }}</td>
+                <td>
+                    <a href="/active_deactive?aid={{ ad[4] }}">{{ "Active" if ad[3] == 1 else "Inactive" }}</a>
+                </td>
+            </tr>
+        {% endfor %}
+    {% endif %}
+</table>
+
+
+</body>
+</html>

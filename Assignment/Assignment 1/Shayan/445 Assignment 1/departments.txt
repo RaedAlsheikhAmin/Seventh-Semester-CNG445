@@ -1,0 +1,4 @@
+Department Code,Department Short Name,Department Name
+355,CNG,Computer Engineering
+356,EEE,Electrical and Electronics Engineering
+365,MECH,Mechanical Engineering

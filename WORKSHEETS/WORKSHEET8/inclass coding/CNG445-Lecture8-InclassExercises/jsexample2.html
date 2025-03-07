@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Java Script Example</title>
+	<script>
+	
+	function fun1(){
+		document.getElementById('p1').innerHTML='How are you?';
+	}
+	
+	function fun2(){
+		document.getElementById('p1').style.fontSize='70px';
+	}
+	
+	function fun3(){
+		document.getElementById('p1').style.display='none';
+	}
+	
+	function fun4(){
+		document.getElementById('p2').style.display='block';
+	}
+	
+	function fun5(){
+		window.alert('I am here!');
+	}
+	</script>
+</head>
+<body>
+	<p id="p1">Hello World!</p>
+	
+	<p id="p2" style="display:none">I was hidden!</p>
+	
+	<button type="button" onclick="fun1()">Click here to change the text!</button><br/>
+	
+	<button type="button" onclick="fun2()">Click here to change the font size!</button><br/>
+	
+	<button type="button" onclick="fun3()">Click here to hide it!</button><br/>
+	
+	<button type="button" onclick="fun4()">Click here to show it!</button><br/>
+	
+	<button type="button" onclick="fun5()">Show Alert!</button>
+</body>
+</html>

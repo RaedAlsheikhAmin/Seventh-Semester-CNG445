@@ -1,0 +1,69 @@
+from threading import *
+import math
+
+class MathThread(Thread):
+    def init(self,tName,x):
+        Thread.init(self, name=tName)
+        self.x = x
+
+    def run(self):
+        t1=MathSin(self.x)
+        t2=MathCos(self.x)
+        t3=MathTan(self.x)
+
+        t1.start()
+        t2.start()
+        t3.start()
+
+        t1.join()
+        t2.join()
+        t3.join()
+
+        p = t1.getResult() + t2.getResult() + t3.getResult()
+        print(p)
+
+class MathSin(MathThread):
+
+    def init(self,x):
+        Thread.init(self)
+        self.x = x
+        self.result = 0
+
+    def run(self):
+        self.result = math.sin(self.x)
+
+    def getResult(self):
+        return self.result
+
+
+class MathCos(MathThread):
+
+    def init(self, x):
+        Thread.init(self)
+        self.x = x
+        self.result = 0
+
+    def run(self):
+        self.result = math.cos(self.x)
+
+    def getResult(self):
+        return self.result
+
+
+class MathTan(MathThread):
+
+    def init(self, x):
+        Thread.init(self)
+        self.x = x
+        self.result = 0
+
+    def run(self):
+        self.result = math.tan(self.x)
+
+    def getResult(self):
+        return self.result
+
+if name == 'main':
+    x = int(input(" Enter x: "))
+    maththread = MathThread("thread 1",x)
+    maththread.start()

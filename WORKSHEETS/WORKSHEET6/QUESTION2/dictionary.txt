@@ -1,0 +1,3 @@
+word1;meaning1;
+word2;meaning2;
+word3;meaning3;

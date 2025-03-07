@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Search For Courses </title>
+	<script>
+			var courses = [
+		{ coursecode: 'CNG140',
+		coursename: 'C Programming',
+		coursecredit: 4 },
+		{ coursecode: 'CNG242',
+		coursename: 'Programming Language Concepts',
+		coursecredit: 4 },
+		{ coursecode: 'CNG445',
+		coursename: 'Software Development with Scripting Languages',
+		coursecredit: 2 },
+		];
+	function Seachcourse(){
+		var a=document.getElementById('p1').value;
+		for (let key of courses){
+			if(key.coursename.search(a)!= -1)
+				 document.getElementById('result').innerHTML= key.coursecode +" " +key.coursename;
+		}
+		
+	}
+	
+	</script>
+</head>
+<body>
+	<p> Search For Courses  </p>
+	<form name="fsimplecalculator">
+	<label> Key word: </label>
+	<input id="p1" type="text" onkeydown="Seachcourse()" value=""></br>
+	<p id="result"> </p>
+	
+	
+	</form>
+
+
+</body>
+
+
+</html>
+

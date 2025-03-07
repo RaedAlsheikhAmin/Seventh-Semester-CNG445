@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Games</title>
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+    <script src="../static/functions.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Manage Your Games</h1>
+    </header>
+     <nav>
+            <a href="/">Home Page</a> |
+            <a href="/manage_games">Published Games</a> |
+            <a href="/profile">My Profile</a> |
+            <a href="/logout">Logout</a>
+     </nav>
+
+    <!-- Error Message -->
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    <!-- Game Creation Form -->
+    <form action="/manage_games" method="post">
+        <label for="title">Game Title:</label>
+        <input type="text" id="title" name="title" class="inputContent" required><br>
+
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" step="0.01" class="inputContent" required><br>
+
+        <label>Genres:</label><br>
+        {% for genre in genres %}
+            <input type="checkbox" id="genre{{ genre[0] }}" name="genres" value="{{ genre[0] }}">
+            <label for="genre{{ genre[0] }}">{{ genre[1] }}</label><br>
+        {% endfor %}
+
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description"></textarea><br>
+
+        <label>Is Full Release:</label>
+        <input type="radio" id="fullrelease" name="isFullrelease" value="1"> Yes
+        <input type="radio" id="earlyaccess" name="isFullrelease" value="0" checked> No<br> <!-- checked means default chosen-->
+
+        <button type="submit">Add Game</button>
+    </form>
+
+    <!-- List of Published Games -->
+    <h2>Your Published Games</h2>
+    {% if games %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Genres</th>
+                    <th>Full Release</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for game in games %}
+                <tr>
+                    <td>{{ game[1] }}</td> <!-- Title -->
+                    <td>{{ game[2] }}$</td> <!-- Price -->
+                    <td>{{ game[3] }}</td> <!-- Description -->
+                    <td>{{ game[5] }}</td> <!-- Genres -->
+                    <td>{{ "Yes" if game[4] == 1 else "No" }}</td> <!-- Full Release -->
+                    <td class="delete_button"><a href="/delete-game/{{ game[0] }}" >Delete</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>You have not published any games yet.</p>
+    {% endif %}
+</body>
+</html>

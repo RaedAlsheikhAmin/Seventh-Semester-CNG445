@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Simple Calculator </title>
+	<script>
+	function Multiply(){
+	var a= parseInt(document.getElementById('p1').value) * parseInt(document.getElementById('p2').value);
+	document.getElementById("result").innerHTML='The result is '+ a;
+	}
+	
+	function Divide(){
+	var b= parseInt(document.getElementById('p1').value) / parseInt(document.getElementById('p2').value);
+	document.getElementById("result").innerHTML='The result is'+ b;
+	
+	}
+	
+	
+	</script>
+</head>
+<body>
+	<p> Simple Calculator </p>
+	<form name="fsimplecalculator">
+	<label> 1st Number: </label>
+	<input id="p1" type="text" value=""></br>
+	<label> 2nd Number:  </label>
+	<input id= "p2" type="text" value=""></br>
+	<button type="button" onclick="Multiply()">Multiply</button>
+	<button type="button" onclick="Divide()">Divide</button><br/>
+	<p id="result"> </p>
+	
+	
+	</form>
+
+
+</body>
+
+
+
+
+</html>
+

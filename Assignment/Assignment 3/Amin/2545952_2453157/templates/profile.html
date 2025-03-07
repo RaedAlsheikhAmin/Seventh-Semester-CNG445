@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" type="text/css" href="static/profile.css">
+    <script src="static/functions.js"></script>
+
+
+</head>
+<body>
+    <form name="register_form" action="{{ url_for('profile') }}" method="post" onsubmit="return validate_profile_form()">
+        <div>
+            <label>Username:</label>
+            <input type="text" name="username" value="{{ default_data['username'] }}">
+        </div>
+
+        <div>
+            <label>Password:</label>
+            <input type="password" name="password" value="{{ default_data['password'] }}">
+        </div>
+
+        <div>
+            <label>Full name:</label>
+            <input type="text" name="full_name" value="{{ default_data['fullname'] }}">
+        </div>
+
+        <div>
+            <label>Email:</label>
+            <input type="email" name="email" value="{{ default_data['email'] }}">
+        </div>
+
+        <div>
+            <label>Phone number:</label>
+            <input type="text" name="phone_number" value="{{ default_data['telno'] }}">
+        </div>
+
+        <button type="submit">Edit</button>
+
+        <p id="error_message">{{msg}}</p>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+        function getBooks(){
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function (){
+                if(this.readyState == 4 && this.status ==200){
+                    var xmlDoc = this.responseXML;
+                    var txt = "";
+                    var books = xmlDoc.getElementsByTagName("book")
+                    var i;
+                    for (i=0; i<books.length; i++){
+                        txt = txt + books[i].getElementsByTagName("title")[0].childNodes[0].nodeValue + " " + books[i].getAttribute("category") + "<br/>";
+                    }
+                    document.getElementById("booklist").innerHTML = txt;
+                }
+            }
+            xhttp.open("GET", "/getxml", true);
+            xhttp.send();
+        }
+
+    </script>
+</head>
+<body>
+<button type="button" onclick="getBooks()">Get Books</button>
+<p id="booklist"></p>
+</body>
+</html>

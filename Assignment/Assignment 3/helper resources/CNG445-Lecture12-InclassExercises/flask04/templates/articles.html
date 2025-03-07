@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h2>{% block title %}Articles{% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+
+{% for article in articles %}
+  <form method="GET" action="/showarticle">
+    {{ article[1] }}
+    <input type="hidden" name="articleid" value="{{ article[0] }}" />
+    <input type="submit" value="See Details">
+  </form>
+{% endfor %}
+
+{% endblock %}

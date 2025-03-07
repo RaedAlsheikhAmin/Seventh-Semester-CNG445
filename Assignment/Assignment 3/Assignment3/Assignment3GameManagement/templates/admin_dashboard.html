@@ -1,0 +1,49 @@
+<!-- this page will be shown when the admin login only-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+    <script src="../static/functions.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+        <nav>
+            <a href="/">Home Page</a> |
+            <a href="/manage_genres">Manage Genres</a> |
+            <a href="/profile">My Profile</a> |
+            <a href="/logout">Logout</a>
+        </nav>
+    </header>
+
+     <section>
+        <h2>Published Games</h2>
+        {% if games %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Genres</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for game in games %}
+                <tr>
+                    <td>{{ game[0] }}</td>
+                    <td>{{ game[1] }}</td>
+                    <td>{{ game[2] }}$</td>
+                    <td>{{ game[3] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No games available at the moment.</p>
+        {% endif %}
+    </section>
+</body>
+</html>

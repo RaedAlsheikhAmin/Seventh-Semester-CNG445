@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ game['title'] }}</title>
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+    <script src="../static/functions.js"></script>
+</head>
+<body>
+    <header>
+        <h1>{{ game['title'] }}</h1>
+    </header>
+
+    <section>
+        <h2>Game Details</h2>
+        <p><strong>Title:</strong> {{ game['title'] }}</p>
+        <p><strong>Description:</strong> {{ game['description'] }}</p>
+        <p><strong>Price:</strong> {{ game['price'] }}$</p>
+        <p><strong>Genres:</strong> {{ game['genres'] }}</p>
+        <p><strong>Full Release:</strong> {{ "Yes" if game['isFullrelease'] == 1 else "No" }}</p>
+    </section>
+
+    <footer>
+        <p><a href="/">Back to Home Page</a></p>
+    </footer>
+</body>
+</html>

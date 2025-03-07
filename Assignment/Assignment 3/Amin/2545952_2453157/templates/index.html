@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Advertisement Website</title>
+    <link rel="stylesheet" type="text/css" href="static/index.css">
+    <script src="static/functions.js"></script>
+
+
+
+</head>
+<body>
+
+{% if logged_in==0 %}
+<form name=login_form action="{{ url_for('home_page') }}" method="post" onsubmit="return validate_login_form()" id="login_form">
+        <div>
+            <label>Username:</label>
+            <input type="text" name="username">
+        </div>
+
+        <div>
+            <label>Password:</label>
+            <input type="password" name="password">
+        </div>
+
+        <button type="submit">Login</button>
+        <p id="error_message">{{msg}}</p>
+        <a href="/register">Don't you have account, click here to register!</a>
+
+</form>
+
+{% else %}
+	<div class="navbar">
+		<a href="/">Home Page</a>
+		<p>|</p>
+		<a href="/advertisement">My Advertisements</a>
+		<p>|</p>
+		<a href="/profile">My Profile</a>
+		<p>|</p>
+        <a href="/logout">Logout</a>
+    </div>
+{% endif %}
+
+<div id="search">
+    <label>Search:</label>
+    <input type="text" name="search">
+    <button onclick="applyFilters()">Search</button>
+</div>
+
+
+<div>
+        <label>Select a category:</label>
+        <select name="category" onchange="applyFilters()" data-categories_length="{{ categories }}" id="category_combobox">
+            {% for category in categories %}
+                <option value="{{ category[0] }}">{{ category[1] }}</option>
+            {% endfor %}
+                <option value="{{ 0 }}">All Categories</option>
+        </select>
+</div>
+
+<p id="Category_name"></p>
+
+<table border="1" id="advertisement_table">
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Contact Full Name</th>
+        <th>More Details</th>
+    </tr>
+        {% for ad in advertisements %}
+
+            {%if ad[3]==1 %}
+            <tr data-cid="{{ ad[6] }}">
+                <td>{{ ad[0] }}</td>
+                <td>{{ ad[1] }}</td>
+                <td>{{ ad[5] }}</td>
+                <td>
+                    <a href="/details?aid={{ ad[4] }}">See More</a>
+                </td>
+            </tr>
+                <p id="No_advertisement"></p>
+            {% endif %}
+        {% endfor %}
+</table>
+
+
+
+</body>
+</html>

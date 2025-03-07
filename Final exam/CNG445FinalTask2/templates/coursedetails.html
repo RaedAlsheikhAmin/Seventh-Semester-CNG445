@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course details</title>
+    <script>
+        function UsernameValidation(str) {
+    if (str.length === 0) {
+        document.getElementById("toshowcoursesrelatedtolecturer").innerHTML = "";
+        return;
+    }
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            document.getElementById("toshowcoursesrelatedtolecturer").innerHTML = this.responseText;
+        }
+    };
+    xmlhttp.open("GET", "/showlecturercourses?q="+str, true); //this should be done in flask, time is up :(
+    xmlhttp.send();
+    </script>
+</head>
+<body>
+<table>
+            <thead>
+                        <tr>
+                            <th>Section</th>
+                            <th>Lecturer</th>
+                        </tr>
+            </thead>
+            <tbody>
+            {% for Section in Sections %}
+                        <tr>
+
+                            <td>{{ Section[0] }}</td>
+                            <td><a href="/Section/{{ Section[1] }}">{{ Section[1] }}</a></td>
+
+                        </tr>
+            {% endfor %}
+            </tbody>
+            <p>Other courses given by {{variable}} in {{variable2}}</p>
+            <p id="toshowcoursesrelatedtolecturer"></p>
+    </table>
+<p>Click <a href="index.html">here</a> to go back to the homepage</p>
+</body>
+</html>
